@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ec7dac3e3884995b61390c3408ee7c, type: 3}
+  m_Name: TYPE_03_DATAS
+  m_EditorClassIdentifier: 
+  m_Type: 2
+  m_Color: {r: 0.2588235, g: 0.36169645, b: 1, a: 1}
+  m_EventMessages:
+  - m_MessageType: 2
+    m_Zone: 3
+    m_BoolParam: 0
+    m_IntParam: 1
+    m_CharacterTypeParam: 0

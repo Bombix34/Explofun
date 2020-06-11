@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f571794d34e54ac4880bc024ede3deb1, type: 3}
   m_Name: Tiles Settings
   m_EditorClassIdentifier: 
-  BounceSpeed: 0.49
+  BounceSpeed: 0.6

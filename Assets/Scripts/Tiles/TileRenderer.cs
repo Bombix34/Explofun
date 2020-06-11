@@ -3,44 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class TileRenderer : MonoBehaviour
+public class TileRenderer : EntityRenderer
 {
     private TileSettings m_Settings;
-    [SerializeField]
-    private SpriteRenderer m_Renderer;
-    private Vector3 m_BaseScale;
+    private TileManager m_Manager;
 
-    public bool IsBouncing { get; set; } = true;
-    private float m_BounceAmount;
-    private float m_BounceSpeed = 0.8f;
-
-    private void Awake()
+    protected override void Awake()
     {
-        m_BaseScale = m_Renderer.transform.localScale;
+        base.Awake();
+        m_Manager = GetComponent<TileManager>();
     }
 
     private void Update()
     {
         if(IsBouncing)
         {
-            m_BounceAmount = Mathf.PingPong(Time.time*m_BounceSpeed, 0.2f);
-            m_Renderer.transform.localScale = new Vector2(m_BaseScale.x + m_BounceAmount, m_BaseScale.x + m_BounceAmount);
+            float bounceAmount = Mathf.PingPong(Time.time*m_Settings.BounceSpeed, 0.2f);
+            Scale = new Vector2(m_BaseScale.x + bounceAmount, m_BaseScale.x + bounceAmount);
         }
-    }
-
-    public void InitRenderer(float bounceSpeed)
-    {
-        m_BounceSpeed = bounceSpeed;
-    }
-
-    public void SetColor(Color newColor)
-    {
-        m_Renderer.color = newColor;
+        if(IsScaleUp)
+        {
+            if (Scale.x < m_BaseScale.x * 1.1f)
+            {
+                Scale += (Vector2.one * Time.fixedDeltaTime);
+                m_Manager.TileTrigger.transform.localScale += (Vector3.one * Time.fixedDeltaTime * 2f);
+            }
+        }
+        else
+            m_Manager.TileTrigger.transform.localScale = Vector3.one;
     }
 
     #region GET/SET
 
-    h
+    public TileSettings Settings { set { m_Settings = value; } }
 
     #endregion
 }
